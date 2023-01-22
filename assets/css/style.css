@@ -1,5 +1,5 @@
 :root {
-    --search-button: rgb(98, 147, 206);
+    --search-button: rgb(48, 93, 147);
     
 }
 
@@ -8,6 +8,8 @@ body {
     border-color: black;
     border-style: solid;
     padding: 20px;
+    max-width: 60%;
+    justify-content: center;
     
 }
 
@@ -21,7 +23,8 @@ header {
 }
 h1,
 h2,
-h3 {
+h3,
+h4 {
     margin: 0px;
 }
 
@@ -70,7 +73,16 @@ main {
 }
 
 #recent-forecasts button {
-    margin: 5px;
+    margin-top: 5px;
+    background-color: var(--search-button);
+    border-color: var(--search-button);
+    color: whitesmoke;
+    border-radius: 5px;
+}
+
+#recent-forecasts button:hover {
+    opacity: 70%;
+    cursor: pointer;
 }
 
 #current-forecast {
@@ -89,8 +101,7 @@ main {
     flex-direction: column;
     padding: 10px;
     margin-right: 10px;
-    margin-top: 10px;
-    border-style: solid;
+    margin-top: 10px;    
     border-width: 2px;
     background-color: var(--search-button);
     color: whitesmoke;
@@ -112,4 +123,10 @@ main {
     background-color: var(--search-button);
     border-color: var(--search-button);
     color: whitesmoke;
+    border-radius: 5px;
+}
+
+#search-btn:hover {
+    cursor: pointer;
+    opacity: 70%;
 }
