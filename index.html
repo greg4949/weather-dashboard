@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv='pragma' content='no-cache'>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Weather Dashboard</title>
+</head>
+<body>
+<header>Weather Dashboard</header>
+<main>
+<div id="sidebar">
+   <div id="searchbar"><h3>Search for a city:</h3>
+        <input id= "search-city" type="text" placeholder="Denver"></input>
+        <button id="search-btn">Search</button>
+   </div>
+   <div id="recent-forecasts"><h3>Recent forecasts:</h3></button>
+   </div>
+</div>
+
+<div id="weather">
+    <div id="current-weather"><span id="city">City: </span>
+        <div id="conditions">
+            <li>Temperature: <span id="temp"></span></li>
+            <li>Wind: <span id="wind"></span></li>
+            <li>Humidity <span id="humid"></span></li>
+        </div>
+    </div>
+    <div id="current-forecast">
+        <div>5-Day Forecast:</div>
+        <div id="forecast-area">
+            <div class="forecast" id="forecast0"></div>
+            <div class="forecast" id="forecast1"></div>
+            <div class="forecast" id="forecast2"></div>
+            <div class="forecast" id="forecast3"></div>
+            <div class="forecast" id="forecast4"></div>
+        </div>            
+    </div>
+</div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+crossorigin="anonymous"></script>
+<script src="./assets/js/script.js"></script>
+</body>
+</html>
