@@ -17,7 +17,7 @@ function getWeather() {
     var queryForecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city.value + "&units=imperial" + "&appid=" + APIkey;
 
     //fetch current weather data from API
-    fetch(queryCurrentURL,{mode: 'no-cors'})
+    fetch(queryCurrentURL)
         .then(function (response) {
             return response.json();
         })
@@ -36,7 +36,7 @@ function getWeather() {
 
         })
     //fetch 5 day weather forecast from api
-    fetch(queryForecastURL,{mode: 'no-cors'})
+    fetch(queryForecastURL)
         .then(function (response) {
             return response.json();
         })
@@ -44,7 +44,7 @@ function getWeather() {
 
             for (var i = 0; i < 5; i++) {
                 var dateF = dayjs(data.list[((i + 1) * 8) - 1].dt_txt).format("M/D/YYYY");
-                var iconF = "http://openweathermap.org/img/wn/" + data.list[((i + 1) * 8) - 1].weather[0].icon + ".png";
+                var iconF = "https://openweathermap.org/img/wn/" + data.list[((i + 1) * 8) - 1].weather[0].icon + ".png";
                 var tempF = data.list[((i + 1) * 8) - 1].main.temp;
                 var windF = data.list[((i + 1) * 8) - 1].wind.speed;
                 var humidF = data.list[((i + 1) * 8) - 1].main.humidity;
