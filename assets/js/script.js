@@ -31,10 +31,7 @@ function getWeather() {
             var humid = data.main.humidity;
            
 
-            document.getElementById('city').innerHTML = cityName + ' (' + currentDate + ') ' + '<img src='+ icon +'>';
-            
-            //console.log(document.getElementById('icon'));
-            //document.getElementById('icon').src = icon;
+            document.getElementById('city').innerHTML = cityName + ' (' + currentDate + ') ' + '<img src='+ icon +'>';            
             document.getElementById('temp').innerHTML = temp + '°F';
             document.getElementById('wind').innerHTML = wind + ' MPH';
             document.getElementById('humid').innerHTML = humid + '%';
@@ -95,11 +92,6 @@ function getWeather() {
         return
     }
 
-
-
-
-
-
 }
 
 
@@ -118,12 +110,6 @@ recent.addEventListener('click',(e) => {
 
 
 
-//obtain weather data from weather api
-    //user inputs city
-    //based on city entered, retrieve temp, wind, and humidity for selected city and current date and display
-    //based on city entered, retrieve temp, wind, and humidity for selected city for the next 5 days out and display
-    //when user clicks search button, store city entered as a button in the bottom section of sidedbar so user can click again to see weather for that city
 
-//
 
 
