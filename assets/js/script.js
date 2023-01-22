@@ -1,13 +1,11 @@
 var submitButton = document.getElementById('search-btn');
-var currentDate =dayjs().format("M/D/YYYY");
-console.log(document.getElementById('icon'));
-
+var currentDate = dayjs().format("M/D/YYYY");
 
 function getWeather() {
 
     var city = document.getElementById('search-city');
     var cityInput = city.value.split(" ");
-    
+
     //loop through each word in city name to capitalize each word
     for (let i = 0; i < cityInput.length; i++) {
         cityInput[i] = cityInput[i][0].toUpperCase() + cityInput[i].substr(1);
@@ -15,11 +13,11 @@ function getWeather() {
     //join each capitalized word of city name into a single string
     var cityName = cityInput.join(" ");
     var APIkey = '05930b46c2deefb5a27a97032d34eb39';
-    var queryCurrentURL = "http://api.openweathermap.org/data/2.5/weather?q=" + city.value + "&units=imperial" + "&appid=" + APIkey;
-    var queryForecastURL = "http://api.openweathermap.org/data/2.5/forecast?q=" + city.value + "&units=imperial" + "&appid=" + APIkey;
+    var queryCurrentURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city.value + "&units=imperial" + "&appid=" + APIkey;
+    var queryForecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city.value + "&units=imperial" + "&appid=" + APIkey;
 
     //fetch current weather data from API
-    fetch(queryCurrentURL)
+    fetch(queryCurrentURL,{mode: 'no-cors'})
         .then(function (response) {
             return response.json();
         })
@@ -29,16 +27,16 @@ function getWeather() {
             var temp = Math.round(data.main.temp);
             var wind = data.wind.speed;
             var humid = data.main.humidity;
-           
 
-            document.getElementById('city').innerHTML = cityName + ' (' + currentDate + ') ' + '<img src='+ icon +'>';            
+
+            document.getElementById('city').innerHTML = cityName + ' (' + currentDate + ') ' + '<img src=' + icon + '>';
             document.getElementById('temp').innerHTML = temp + '°F';
             document.getElementById('wind').innerHTML = wind + ' MPH';
             document.getElementById('humid').innerHTML = humid + '%';
 
         })
     //fetch 5 day weather forecast from api
-    fetch(queryForecastURL)
+    fetch(queryForecastURL,{mode: 'no-cors'})
         .then(function (response) {
             return response.json();
         })
@@ -46,7 +44,7 @@ function getWeather() {
 
             for (var i = 0; i < 5; i++) {
                 var dateF = dayjs(data.list[((i + 1) * 8) - 1].dt_txt).format("M/D/YYYY");
-                var iconF = "https://openweathermap.org/img/wn/" + data.list[((i + 1) * 8) - 1].weather[0].icon + ".png";
+                var iconF = "http://openweathermap.org/img/wn/" + data.list[((i + 1) * 8) - 1].weather[0].icon + ".png";
                 var tempF = data.list[((i + 1) * 8) - 1].main.temp;
                 var windF = data.list[((i + 1) * 8) - 1].wind.speed;
                 var humidF = data.list[((i + 1) * 8) - 1].main.humidity;
@@ -99,11 +97,11 @@ function getWeather() {
 submitButton.addEventListener('click', getWeather)
 
 var recent = document.getElementById('recent-forecasts');
-recent.addEventListener('click',(e) => {
-    if(e.target.classList.contains('recent')) {
-    console.log(e.target.innerHTML);
-    document.getElementById('search-city').value = e.target.innerHTML
-    getWeather()
+recent.addEventListener('click', (e) => {
+    if (e.target.classList.contains('recent')) {
+        console.log(e.target.innerHTML);
+        document.getElementById('search-city').value = e.target.innerHTML
+        getWeather()
     }
 })
 
